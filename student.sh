@@ -26,7 +26,8 @@ read_options(){
 	case $choice in
 		1) one ;;
 		2) two ;;
-		3) exit 0;;
+		#3) three ;;
+		4) exit 0;;
 		*) echo  "Error..." && sleep 2
 	esac
 }
@@ -57,7 +58,9 @@ one(){
 	
 
 	NOW=$(date +"%m-%d-%Y %H:%M")		
-
+	echo "Enter amount"
+	read amount
+	students[$first]=$(( students[$first] - amount ))
 	remaining=${cost[$branch]}
 
 	out_file $name remaining $NOW
@@ -90,7 +93,13 @@ two(){
 
    	
 }
-
+# three() {
+# 	for student in students
+# 	do
+# 		if [student[$remaining]!= 0]
+# 		then
+# 			echo "Name" student[$name]
+# }
 
 while true
 do
