@@ -2,7 +2,15 @@
 
 
 declare -A cost students
-cost=([comp]=1000 [elec]=2000 [it]=3000)
+cost=([COMP]=1000 [ELEC]=2000 [IT]=3000 [EXTC]=5000)
+
+function out_file 
+{
+
+	echo "Name-$name Amount due -$remaining Date-$NOW" >> $name
+}
+
+
 
 c=999
 
@@ -20,31 +28,48 @@ read choice
 case $choice in
 
 1) 
-	echo "Enter the first name"
+	echo "Enter the full name"
 	read name
 
-	echo "Enter the branch"
+	name=${name%% *}
+
+	echo "Enter the branch of choice"
 	read branch
 
-	echo "cost of branch is ${cost[$branch]}" 
+	echo "Fee of the chosen branch is ${cost[$branch]}" 
 	
 	students[$name]=${cost[$branch]}
+
+	NOW=$(date +"%m-%d-%Y %H:%M")		
+
+	remaining=${cost[$branch]}
+
+	out_file $name remaining $NOW
 	
 ;;
 
 2) 
-    echo "Enter student's first name"
+    echo "Enter Student's name"
     read first
+
+    first=${first%% *}
     
     echo "Amount due is ${students[$first]}"
     
-    echo "Enter the amount you want to pay"
+    echo "Enter the amount received"
     read amount
     
     echo "Entered amount is being deducted from the total amount"
     students[$first]=$(( students[$first] - amount ))
+
+    NOW=$(date +"%m-%d-%Y %H:%M")
+
+    remaining=${students[$first]}
+
+    out_file $first $remaining $NOW
+
     
-    echo "Students current amount is ${students[$first]} "
+    echo "$first 's remaining amount is ${students[$first]} "
 
 ;;
 
