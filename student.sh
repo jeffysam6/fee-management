@@ -37,12 +37,24 @@ one(){
 
 	name=${name%% *}
 
-	echo "Enter the branch of choice"
+	echo "Choose the branch"
+	echo "1.Computer Science"
+	echo "2.EXTC"
+	echo "3.IT"
+	echo "4.Electrical"
 	read branch
+	case $branch in 
+		1) students[$name]=${cost[COMP]}
+			echo "Fee of the chosen branch is ${cost[COMP]}";;
+		2)  students[$name]=${cost[EXTC]}
+			echo "Fee of the chosen branch is ${cost[EXTC]}";;
+		3) students[$name]=${cost[IT]}
+			echo "Fee of the chosen branch is ${cost[IT]}";;
+		4) students[$name]=${cost[ELEC]}
+			echo "Fee of the chosen branch is ${cost[ELEC]}";;
 
-	echo "Fee of the chosen branch is ${cost[$branch]}" 
+	esac
 	
-	students[$name]=${cost[$branch]}
 
 	NOW=$(date +"%m-%d-%Y %H:%M")		
 
