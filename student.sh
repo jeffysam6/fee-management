@@ -137,7 +137,6 @@ three(){
 }
 
 
-
 while true
 do
  	clear
