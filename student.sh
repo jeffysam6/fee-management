@@ -46,9 +46,14 @@ one(){
 	read name
 
 	name=${name%% *}
+<<<<<<< HEAD
 	echo -e "\n"
 	echo "Choose the branch"
 	
+=======
+
+	echo "Choose the branch"
+>>>>>>> d35901a1e9384449de150f7a1310e38e971f0662
 	echo "1.Computer Science"
 	echo "2.EXTC"
 	echo "3.IT"
@@ -65,7 +70,10 @@ one(){
 			echo "Fee of the chosen branch is ${cost[ELEC]}";;
 
 	esac
+<<<<<<< HEAD
 	
+=======
+>>>>>>> d35901a1e9384449de150f7a1310e38e971f0662
 	
 
 	NOW=$(date +"%m-%d-%Y %H:%M")		
