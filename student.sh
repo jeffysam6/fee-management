@@ -4,30 +4,34 @@
 declare -A cost students
 cost=([COMP]=1000 [ELEC]=2000 [IT]=3000 [EXTC]=5000)
 
-function out_file 
+out_file()
 {
 
-	echo "Name-$name Amount due -$remaining Date-$NOW" >> $name
+	echo "Name=$name|Amount due=$remaining|Date-$NOW" >> $name
 }
 
+show_menus() {
+	echo "                                                                                            "
+	echo "~~~~~~~~~~~~~~~~~~~~~"	
+	echo " M A I N - M E N U"
+	echo "~~~~~~~~~~~~~~~~~~~~~"
+	echo "1. NEW ADMISSION"
+	echo "2. PAY DUE"
+	echo "3.Exit"
+}
 
+read_options(){
+	local choice
+	read -p "Enter choice [ 1 - 3] " choice
+	case $choice in
+		1) one ;;
+		2) two ;;
+		3) exit 0;;
+		*) echo  "Error..." && sleep 2
+	esac
+}
 
-c=999
-
-while [ $c -gt 0 ]; do
-
-echo "******MENU*******"
-
-echo "1. NEW ADMISSION"
-echo "2. PAY DUE"
-echo "3.Exit"
-echo "SELECT AN OPTION"
-
-read choice
-
-case $choice in
-
-1) 
+one(){
 	echo "Enter the full name"
 	read name
 
@@ -45,11 +49,12 @@ case $choice in
 	remaining=${cost[$branch]}
 
 	out_file $name remaining $NOW
-	
-;;
 
-2) 
-    echo "Enter Student's name"
+	
+}
+
+two(){
+	echo "Enter Student's name"
     read first
 
     first=${first%% *}
@@ -71,11 +76,13 @@ case $choice in
     
     echo "$first 's remaining amount is ${students[$first]} "
 
-;;
+   	
+}
 
 
-3) exit ;;
-
-esac
-
+while true
+do
+ 
+	show_menus
+	read_options
 done
