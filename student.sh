@@ -84,6 +84,14 @@ one(){
 
 	echo "$name  			  $remaining					$NOW" >> common
 
+	echo -e "\n"
+	echo "Do you want to continue with the payment[Y/N]"
+	read choice
+	if [ $choice = 'Y' ]; then
+		two
+
+	fi
+
 
 
 }
@@ -117,7 +125,7 @@ two(){
 
 three(){
 
-
+	echo -e "\n"
 	echo "Choose the type of output"
 	echo "1. Transaction History of a Student"
 	echo "2. Common Transaction History"
